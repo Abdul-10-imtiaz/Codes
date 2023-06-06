@@ -1,0 +1,1027 @@
+1-----------------------------------------------------------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+struct moviedata
+{
+	string title;
+	string Director;
+	int year;
+	string time;
+	};
+   void	displayinfo(moviedata);
+	int main()
+	{
+		moviedata a,b;
+		a.Director= "hennery";
+		a.time= "2 hours";
+		a.title= "Godzilla";
+		a.year= 2018;
+		
+		b.Director= "Andrew";
+		b.time= "2 hours";
+		b.title= "Avengers";
+		b.year=2020;
+		
+		displayinfo(a);
+		displayinfo(b);
+	
+	}
+	void displayinfo(moviedata M)
+	{
+		cout << "\n\n       Move information\n"
+	     << "-----------------------------------\n";
+	cout << "Title:                 " << M.title << endl;
+	cout << "Director:              " << M.Director << endl;
+	cout << "Year Released:         " << M.year << endl;
+	cout << "Runing Time (minutes): " << M.time << endl;
+
+	} 
+2----------------------------------------------------------------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+struct moviedata
+{
+	string title;
+	string Director;
+	int year;
+	string time;
+	int production_cost;
+	string first_yr_revenues;
+	};
+   void	displayinfo(moviedata);
+	int main()
+	{
+		moviedata a,b;
+		a.Director= "hennery";
+		a.time= "2 hours";
+		a.title= "Godzilla";
+		a.year= 2018;
+		a.production_cost=100000000;
+		a.first_yr_revenues="3 million";
+		
+		b.Director= "Andrew";
+		b.time= "2 hours";
+		b.title= "Avengers";
+		b.year=2020;
+		b.production_cost=1000000000;
+		b.first_yr_revenues="4 million";
+		
+		displayinfo(a);
+		displayinfo(b);
+	
+	}
+	void displayinfo(moviedata M)
+	{
+		cout << "\n\n       Move information\n"
+	     << "-----------------------------------\n";
+	cout << "Title:                 " << M.title << endl;
+	cout << "Director:              " << M.Director << endl;
+	cout << "Year Released:         " << M.year << endl;
+	cout << "Runing Time (minutes): " << M.time << endl;
+	cout<<"Production Cost:        " << M.production_cost<<endl;
+	cout<<"First Year Revenues     " << M.first_yr_revenues<<endl; 
+
+	} 
+3------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#include<iostream>
+#include<string>
+using namespace std;
+struct company
+{
+	string division_name;
+	int first_quater_sales;
+	int second_quater_sales;
+	int third_quater_sales;
+	int fourth_quater_sales;
+	int total_annuel_sales;
+	int average_quarterly_sales;
+};
+void calcost(company &);
+void displayinfo(company);
+int main()
+{
+	company A,B,C,D;
+    A.division_name="east";
+	A.first_quater_sales=1550;
+	A.second_quater_sales=3100;
+	A.third_quater_sales=3200;
+	A.fourth_quater_sales=7300;	
+
+    B.division_name="west";
+	B.first_quater_sales=1100;
+	B.second_quater_sales=4100;
+	B.third_quater_sales=1300;
+	B.fourth_quater_sales=1300;	
+   
+    C.division_name="north";
+	C.first_quater_sales=1400;
+	C.second_quater_sales=9100;
+	C.third_quater_sales=1800;
+	C.fourth_quater_sales=7300;	
+	
+    D.division_name="south";
+	D.first_quater_sales=1600;
+	D.second_quater_sales=3100;
+	D.third_quater_sales=1200;
+	D.fourth_quater_sales=5300;	
+    
+    calcost(A);
+    calcost(B);
+    calcost(C);
+    calcost(D);
+    
+    displayinfo(A);
+    displayinfo(B);
+    displayinfo(C);
+    displayinfo(D);
+    return 0;
+}
+void calcost(company &M)
+{
+	M.total_annuel_sales=M.first_quater_sales+M.second_quater_sales+M.third_quater_sales+M.fourth_quater_sales;
+	M.average_quarterly_sales=M.total_annuel_sales/4;
+	
+}
+void displayinfo(company D)
+{
+	cout << "\n           Sales Data\n";
+	cout << "---------------------------------------\n";
+    //cout << fixed << showpoint << setprecision(2);
+	cout << "Division :          " << D.division_name << endl;
+	cout << "Total Sales :       $" << D.total_annuel_sales << endl;
+	cout << "Quarterly average : $" << D.average_quarterly_sales << endl;
+}
+
+4----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#include<iostream>
+using namespace std;
+const short months = 12;
+char MONTHS[months][10] = { "January", "February", "March", "April", "May",
+			    "June", "July", "August", "September", "October",
+			    "November", "December" } ; 
+struct Weather_data
+{
+	float total_rainfall;
+	float high_temp;
+	float low_temp;
+	float avg_temp;
+	string month;
+};
+void setAverage(Weather_data [], int);
+double arrayAverage(Weather_data [], string);
+void max_min_temp(Weather_data [], short&, short&);
+void getData(Weather_data []);
+void lastBits(Weather_data []);
+int main()
+{
+	Weather_data array[months];
+
+	getData(array);		
+	lastBits(array);
+
+	return 0;
+	
+}
+void 	setAverage(Weather_data array[],int i )
+{
+	array[i].avg_temp=(array[i].high_temp+array[i].low_temp)/2;
+}
+ double arrayAverage(Weather_data array [], string choice)
+{
+	double average = 0;	
+	if(choice == "temp")
+	{
+	
+		
+		for(int i = 0; i < months; i++)
+			average += array[i].avg_temp;
+
+	
+		return (average / months);
+	}
+
+	
+	if(choice == "rain")
+	{
+		
+		for(int i = 0; i < months; i++)
+			average += array[i].total_rainfall;
+
+		
+		return (average / months);
+	}
+}
+
+
+void max_min_temp(Weather_data array [], short & max_pos, short & min_pos)
+{
+	
+	double min = array[0].low_temp, max = array[0].high_temp;
+	min_pos = 0;
+	max_pos = 0;
+	
+	
+	for(int i = 1; i < months; i++)
+	{	
+	
+		if(min > array[i].low_temp)
+		{
+			min = array[i].low_temp;
+			min_pos = i;
+		}
+		
+	
+		if(max < array[i].high_temp)
+		{
+			max = array[i].high_temp;
+			max_pos = i;
+		}
+	}
+}
+
+
+void getData(Weather_data array[])
+{
+	cout << "Let's do some weather statistics. " << endl;
+
+	cout << "We'll do the total rainfall plus "<< endl;
+	cout << "highest and lowest temperatures" << endl;
+	cout << "according to months ranging from -100 to 140 degrees "<< endl;
+	cout <<	"Fahrenheit." << endl;
+	
+	for(int i = 0; i < months; i++)
+	{
+	
+		cout << "From " <<  MONTHS[i] << ": " <<  endl;
+
+		cout << "Total rainfall: \t";
+
+		cin >> array[i].total_rainfall;
+
+		
+		while(array[i].total_rainfall < 0)
+		{
+			cout << endl << "Please enter something that isn't negative. ";
+
+			cout << "Total rainfall: \t";
+
+			cin >> array[i].total_rainfall;
+		}
+
+		cout << "Highest temperature: \t";
+
+		cin >> array[i].high_temp;
+	
+		
+		while((array[i].high_temp < -100) or (array[i].high_temp > 140))
+		{
+			cout << endl << "Input a temperature " << endl << "ranging from -100 to 140 degrees Fahrenheit. "<< endl;
+
+			cout << "Highest temperature: \t";
+
+			cin >> array[i].high_temp;
+		}
+
+		cout << "Lowest temperature: \t";
+
+		cin >> array[i].low_temp;
+
+	
+		while((array[i].low_temp < -100) or (array[i].low_temp > 140)
+			   or (array[i].low_temp > array[i].high_temp))
+		{
+			cout << "Either you need to input a temperature " << endl << "ranging from -100 to 140 degrees " << endl << "Fahrenheit or your lowest is bigger than the highest. " << endl;
+
+			cout << "Lowest temperature: \t";
+
+			cin >> array[i].low_temp;
+		}
+
+		
+		setAverage(array, i);
+
+		cout << endl;
+	}
+}
+
+
+void lastBits(Weather_data array[])
+{
+	short max_pos, min_pos;		
+
+	max_min_temp(array, max_pos, min_pos);	
+
+	cout << "Now to show the last bits of the year. " <<  endl;
+	
+	cout << "Average rainfall: \t " << arrayAverage(array, "rain") << endl
+		 << "Highest temperature: \t " << array[max_pos].high_temp << " (on " << MONTHS[max_pos] << ")" << endl;
+	cout<< "Lowest temperature: \t " << array[min_pos].low_temp << " (on " << MONTHS[min_pos] << ")" << endl << "Average temperature: \t " << arrayAverage(array, "temp") << endl;
+}
+
+6----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#include<iostream>
+using namespace std;
+struct players
+{
+	string Name="";
+    int Number=0;
+   int Scored_by_Player=0;
+};
+void input_info(players arr[], int i);
+void diplay_info(players arr[], int j);
+void cal_score(players arr[], int j);
+int main()
+{
+	players arr[12];
+	input_info(arr,12);
+	diplay_info(arr,12);
+	cal_score(arr, 12);
+}
+void input_info(players arr[],int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "Enter the name of the player " << i + 1 << ":";
+		cin >> arr[i].Name;
+		cout << "enter the number of the player " << i + 1 << ":";
+		cin >> arr[i].Number;
+		cout << "Enter the score made by the player " << i + 1 << ":";
+		cin >> arr[i].Scored_by_Player;
+		cout << "----------------------------------------------------------------------------------" << endl;
+	}
+}
+void diplay_info(players arr[],int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "----------------------------------------------------------------------------------" << endl;
+		cout << "                          INFORMATION OF THE PLAYERS                              " << endl;
+		cout << "----------------------------------------------------------------------------------" << endl;
+		cout << "NAME OF THE PLAYER " << i + 1 << ":" << arr[i].Name << endl;
+		cout << "NUMBER OF THE PLAYER " << i + 1 << ":" << arr[i].Number << endl;
+		cout << "SCORE OF THE PLAYER " << i + 1 << ":" << arr[i].Scored_by_Player << endl;
+	}
+}
+void cal_score(players arr[], int j)
+{
+	int sum = 0;
+	for (int i = 0; i < j; i++)
+	{
+		sum= sum + arr[i].Scored_by_Player;
+	}
+	cout << "----------------------------------------------------------------------------------" << endl;
+	cout << "TOTAL SCORES OF ALL THE PLYAERS IS:" << sum << endl;
+	cout << "----------------------------------------------------------------------------------" << endl;
+}
+
+7---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#include<iostream>
+using namespace std;
+struct  customer
+{
+	string  Name;
+	string  Address;
+	string City, State; 
+	int ZIP=0;
+	int Tel_Num=0;
+	float Account_Balance=0;
+	string	Date_of_Last_Payment;
+};
+void input_info(customer arr[], int j);
+void display_info(customer arr[], int j);
+void edit_info(customer arr[], int j, string name);
+int main()
+{
+	int op;
+	customer x[2];
+	menu:
+	cout << "-------------------------------------------------------------------------" << endl;
+	cout << "                                   MENU                                  " << endl;
+	cout << "-------------------------------------------------------------------------" << endl;
+	cout << "Enter 1 to input the data of the customer" << endl;
+	cout << "Enter 2 to edit data of the customer" << endl;
+	cout << "Enter 3 to display the data of customer " << endl;
+	cin >> op;
+	cout << "-------------------------------------------------------------------------" << endl;
+	if (op == 1)
+	{
+		input_info(x, 2);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 2)
+	{
+		string a;
+		cout << "Enter any name of the customer:";
+		cin >> a;
+		edit_info(x, 2, a);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 3)
+	{
+		display_info(x, 2);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+}
+void input_info(customer arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "Enter the name of the customer " << i + 1 << ":";
+		cin >> arr[i].Name;
+		cout << "Enter the address of the customer " << i + 1 << ":";
+		cin >> arr[i].Address;
+		cout << "Enter the name of city in which the customer lives " << i + 1 << ":";
+		cin >> arr[i].City;
+		cout << "Enter the name of state in which the customer lives " << i + 1 << ":";
+		cin >> arr[i].State;
+		cout << "Enter the ZIP code " << i + 1 << ":";
+		cin >> arr[i].ZIP;
+		cout << "Enter the Telephone number of the customer " << i + 1 << ":";
+		cin >> arr[i].Tel_Num;
+		cout << "Enter the account balance of the customer " << i + 1 << ":";
+		cin >> arr[i].Account_Balance;
+		cout << "Enter the date of last payment of the customer " << i + 1 << ":";
+		cin >> arr[i].Date_of_Last_Payment;
+		cout << "-------------------------------------------------------------------------" << endl;
+	}
+}
+void edit_info(customer arr[],int j, string name)
+{
+	for (int i = 0; i < j; i++)
+	{
+		if (arr[i].Name == name)
+		{
+			cout << "Enter the address of the customer:";
+			cin >> arr[i].Address;
+			cout << "Enter the name of city in which the customer lives:";
+			cin >> arr[i].City;
+			cout << "Enter the name of state in which the customer lives:";
+			cin >> arr[i].State;
+			cout << "Enter the ZIP code:";
+			cin >> arr[i].ZIP;
+			cout << "Enter the Telephone number of the customer:";
+			cin >> arr[i].Tel_Num;
+			cout << "Enter the account balance of the customer:";
+			cin >> arr[i].Account_Balance;
+			cout << "Enter the date of last payment of the customer:";
+			cin >> arr[i].Date_of_Last_Payment;
+		}
+	}
+}
+void display_info(customer arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                   INFORMATION OF " << i + 1 <<" CUSTOMER  "<< endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "NAME:" << arr[i].Name << endl;
+		cout << "ADSRESS:" << arr[i].Address << endl;
+		cout << "CITY:" << arr[i].City << endl;
+		cout << "STATE:" << arr[i].State << endl;
+		cout << "ZIP CODE" << arr[i].ZIP << endl;
+		cout << "TELEPHONE NUMBER:" << arr[i].Tel_Num << endl;
+		cout << "ACCOUNT BALANCE:" << arr[i].Account_Balance << endl;
+		cout << "DATE OF LAST PAYMENT:" << arr[i].Date_of_Last_Payment << endl;
+	}
+
+
+
+8---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#include<iostream>
+using namespace std;
+struct  customer
+{
+	string  Name;
+	string  Address;
+	string City, State; 
+	int ZIP=0;
+	int Tel_Num=0;
+	float Account_Balance=0;
+	string	Date_of_Last_Payment;
+};
+void input_info(customer arr[], int j);
+void display_info(customer arr[], int j);
+void edit_info(customer arr[], int j, string name);
+void display_updated_info(customer arr[], int j);
+void search_info(customer arr[], int j, string name);
+int main()
+{
+	int op;
+	customer x[2];
+	menu:
+	cout << "-------------------------------------------------------------------------" << endl;
+	cout << "                                   MENU                                  " << endl;
+	cout << "-------------------------------------------------------------------------" << endl;
+	cout << "Enter 1 to input the data of the customer" << endl;
+	cout << "Enter 2 to display data of the customer" << endl;
+	cout << "Enter 3 to edit the data of customer " << endl;
+	cout << "Enter 4 to display updated data of the customer" << endl;
+	cout << "Enter 5 to search the data of customer " << endl;
+	cin >> op;
+	cout << "-------------------------------------------------------------------------" << endl;
+	if (op == 1)
+	{
+		input_info(x, 2);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 2)
+	{
+		display_info(x, 2);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 3)
+	{
+		string a;
+		cout << "Enter name of the customer of which you want to updated data: ";
+		cin >> a;
+		edit_info(x, 2, a);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 4)
+	{
+		display_updated_info(x, 2);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 5)
+	{
+		string a;
+		cout << "Enter name of the customer by which you want to search: ";
+		cin >> a;
+		search_info(x, 2, a);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+}
+void input_info(customer arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "Enter the name of the customer " << i + 1 << ":";
+		cin >> arr[i].Name;
+		cout << "Enter the address of the customer " << i + 1 << ":";
+		cin >> arr[i].Address;
+		cout << "Enter the name of city in which the customer lives " << i + 1 << ":";
+		cin >> arr[i].City;
+		cout << "Enter the name of state in which the customer lives " << i + 1 << ":";
+		cin >> arr[i].State;
+		cout << "Enter the ZIP code " << i + 1 << ":";
+		cin >> arr[i].ZIP;
+		cout << "Enter the Telephone number of the customer " << i + 1 << ":";
+		cin >> arr[i].Tel_Num;
+		cout << "Enter the account balance of the customer " << i + 1 << ":";
+		cin >> arr[i].Account_Balance;
+		cout << "Enter the date of last payment of the customer " << i + 1 << ":";
+		cin >> arr[i].Date_of_Last_Payment;
+		cout << "-------------------------------------------------------------------------" << endl;
+	}
+}
+void edit_info(customer arr[],int j, string name)
+{
+	for (int i = 0; i < j; i++)
+	{
+		if (arr[i].Name == name)
+		{
+			cout << "Enter the address of the customer:";
+			cin >> arr[i].Address;
+			cout << "Enter the name of city in which the customer lives:";
+			cin >> arr[i].City;
+			cout << "Enter the name of state in which the customer lives:";
+			cin >> arr[i].State;
+			cout << "Enter the ZIP code:";
+			cin >> arr[i].ZIP;
+			cout << "Enter the Telephone number of the customer:";
+			cin >> arr[i].Tel_Num;
+			cout << "Enter the account balance of the customer:";
+			cin >> arr[i].Account_Balance;
+			cout << "Enter the date of last payment of the customer:";
+			cin >> arr[i].Date_of_Last_Payment;
+		}
+	}
+}
+void display_info(customer arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                   INFORMATION OF " << i + 1 <<" CUSTOMER  "<< endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "NAME:" << arr[i].Name << endl;
+		cout << "ADSRESS:" << arr[i].Address << endl;
+		cout << "CITY:" << arr[i].City << endl;
+		cout << "STATE:" << arr[i].State << endl;
+		cout << "ZIP CODE" << arr[i].ZIP << endl;
+		cout << "TELEPHONE NUMBER:" << arr[i].Tel_Num << endl;
+		cout << "ACCOUNT BALANCE:" << arr[i].Account_Balance << endl;
+		cout << "DATE OF LAST PAYMENT:" << arr[i].Date_of_Last_Payment << endl;
+	}
+}
+void display_updated_info(customer arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "              UPDATED INFORMATION OF " << i + 1 << " CUSTOMER  " << endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "NAME:" << arr[i].Name << endl;
+		cout << "ADSRESS:" << arr[i].Address << endl;
+		cout << "CITY:" << arr[i].City << endl;
+		cout << "STATE:" << arr[i].State << endl;
+		cout << "ZIP CODE" << arr[i].ZIP << endl;
+		cout << "TELEPHONE NUMBER:" << arr[i].Tel_Num << endl;
+		cout << "ACCOUNT BALANCE:" << arr[i].Account_Balance << endl;
+		cout << "DATE OF LAST PAYMENT:" << arr[i].Date_of_Last_Payment << endl;
+	}
+}
+	void search_info(customer arr[],int j, string name)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                SEARCHED INFORMATION OF CUSTOMER  " << endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		for (int i = 0; i < j; i++)
+		{
+			if (name == arr[i].Name)
+			{
+				cout << "NAME:" << arr[i].Name << endl;
+				cout << "ADSRESS:" << arr[i].Address << endl;
+				cout << "CITY:" << arr[i].City << endl;
+				cout << "STATE:" << arr[i].State << endl;
+				cout << "ZIP CODE" << arr[i].ZIP << endl;
+				cout << "TELEPHONE NUMBER:" << arr[i].Tel_Num << endl;
+				cout << "ACCOUNT BALANCE:" << arr[i].Account_Balance << endl;
+				cout << "DATE OF LAST PAYMENT:" << arr[i].Date_of_Last_Payment << endl;
+			}
+			else
+			{
+				cout << "NO MATCH FOUND" << endl;
+			}
+	    }
+	}
+9---------------------------------------------------------------------------------------------------------------------------------------------------
+
+#include<iostream>
+using namespace std;
+struct speaker
+{
+	string name;
+	string tel_num;
+	string speaking_topic;
+	int fee_requied=0;
+};
+void input_info(speaker arr[], int j);
+void edit_info(speaker arr[], int j, string n);
+void display_info(speaker arr[], int j);
+void display_updated_info(speaker arr[], int j);
+int main()
+{
+	    int op;
+		speaker x[2];
+		menu:
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                                   MENU                                  " << endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "Enter 1 to input the data of the speaker" << endl;
+		cout << "Enter 2 to display data of the speaker" << endl;
+		cout << "Enter 3 to edit the data of speaker " << endl;
+		cout << "Enter 4 to display updated data of the speaker" << endl;
+		cin >> op;
+		cout << "-------------------------------------------------------------------------" << endl;
+		if (op == 1)
+		{
+			input_info(x, 2);
+			int back;
+			cout << "                                Enter 0 to go back to the menu:";
+			cin >> back;
+			if (back == 0)
+			{
+				goto menu;
+			}
+		}
+		if (op == 2)
+		{
+			display_info(x, 2);
+			int back;
+			cout << "                                Enter 0 to go back to the menu:";
+			cin >> back;
+			if (back == 0)
+			{
+				goto menu;
+			}
+		}
+		if (op == 3)
+		{
+			string a;
+			cout << "Enter name of the speaker of which you want to updated data:";
+			cin >> a;
+			edit_info(x, 2, a);
+			int back;
+			cout << "                                Enter 0 to go back to the menu:";
+			cin >> back;
+			if (back == 0)
+			{
+				goto menu;
+			}
+		}
+		if (op == 4)
+		{
+			display_updated_info(x, 2);
+			int back;
+			cout << "                                Enter 0 to go back to the menu:";
+			cin >> back;
+			if (back == 0)
+			{
+				goto menu;
+			}
+		}
+
+}
+void input_info(speaker arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                   INFORMATION OF " << i + 1 <<" SPEAKER"<< endl;
+    	cout << "-------------------------------------------------------------------------" << endl;
+		cout << "Enter the name of the speaker:";
+		cin >> arr[i].name;
+		cout << "Enter tha telephone number of the speaker:";
+		cin >> arr[i].tel_num;
+		cout << "Enter the topic of the speach:";
+		cin >> arr[i].speaking_topic;
+		cout << "Enter the fee requied for the speaker:";
+		cin >> arr[i].fee_requied;
+	}
+}
+void edit_info(speaker arr[], int j,string n)
+{
+	cout << "-------------------------------------------------------------------------" << endl;
+	cout << "                   UPDATE INFORMATION OF SPEAKER" << endl;
+	cout << "-------------------------------------------------------------------------" << endl;
+	for (int i = 0; i < j; i++)
+	{
+		if (arr[i].name == n)
+		{
+			cout << "Enter tha telephone number of the speaker:";
+			cin >> arr[i].tel_num;
+			cout << "Enter the topic of the speach:";
+			cin >> arr[i].speaking_topic;
+			cout << "Enter the fee requied for the speaker:";
+			cin >> arr[i].fee_requied;
+		}
+	}
+}
+void display_info(speaker arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                   INFORMATION OF " << i + 1 << " SPEAKER" << endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "NAME:" << arr[i].name << endl;
+		cout << "TELEPHONE NUMBER:" << arr[i].tel_num << endl;
+		cout << "SPEAKING TOPIC:" << arr[i].speaking_topic << endl;
+		cout << "FEE REQUIED:" << arr[i].fee_requied << endl;
+	}
+}
+void display_updated_info(speaker arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                  UPDATED INFORMATION OF " << i + 1 << " SPEAKER" << endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "NAME:" << arr[i].name << endl;
+		cout << "TELEPHONE NUMBER:" << arr[i].tel_num << endl;
+		cout << "SPEAKING TOPIC:" << arr[i].speaking_topic << endl;
+		cout << "FEE REQUIED:" << arr[i].fee_requied << endl;
+	}
+}
+10----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#include<iostream>
+using namespace std;
+struct speaker
+{
+	string name;
+	string tel_num;
+	string speaking_topic;
+	int fee_requied = 0;
+};
+void input_info(speaker arr[], int j);
+void edit_info(speaker arr[], int j, string n);
+void display_info(speaker arr[], int j);
+void display_updated_info(speaker arr[], int j);
+void search_info(speaker arr[], int j, string name);
+int main()
+{
+	int op;
+	speaker x[2];
+menu:
+	cout << "-------------------------------------------------------------------------" << endl;
+	cout << "                                   MENU                                  " << endl;
+	cout << "-------------------------------------------------------------------------" << endl;
+	cout << "Enter 1 to input the data of the speaker" << endl;
+	cout << "Enter 2 to display data of the speaker" << endl;
+	cout << "Enter 3 to edit the data of speaker " << endl;
+	cout << "Enter 4 to display updated data of the speaker" << endl;
+	cout << "Enter 5 to search the data of speaker " << endl;
+	cin >> op;
+	cout << "-------------------------------------------------------------------------" << endl;
+	if (op == 1)
+	{
+		input_info(x, 2);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 2)
+	{
+		display_info(x, 2);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 3)
+	{
+		string a;
+		cout << "Enter name of the speaker you want to edit the data:";
+		cin >> a;
+		edit_info(x, 2, a);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 4)
+	{
+		display_updated_info(x, 2);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+	if (op == 5)
+	{
+		string a;
+		cout << "Enter name of the speaker by which you want to search: ";
+		cin >> a;
+		search_info(x, 2, a);
+		int back;
+		cout << "                                Enter 0 to go back to the menu:";
+		cin >> back;
+		if (back == 0)
+		{
+			goto menu;
+		}
+	}
+}
+void input_info(speaker arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                   INFORMATION OF " << i + 1 << " SPEAKER" << endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "Enter the name of the speaker:";
+		cin >> arr[i].name;
+		cout << "Enter tha telephone number of the speaker:";
+		cin >> arr[i].tel_num;
+		cout << "Enter the topic of the speach:";
+		cin >> arr[i].speaking_topic;
+		cout << "Enter the fee requied for the speaker:";
+		cin >> arr[i].fee_requied;
+	}
+}
+void edit_info(speaker arr[], int j, string n)
+{
+	cout << "-------------------------------------------------------------------------" << endl;
+	cout << "                   UPDATE INFORMATION OF SPEAKER" << endl;
+	cout << "-------------------------------------------------------------------------" << endl;
+	for (int i = 0; i < j; i++)
+	{
+		if (arr[i].name == n)
+		{
+			cout << "Enter tha telephone number of the speaker:";
+			cin >> arr[i].tel_num;
+			cout << "Enter the topic of the speach:";
+			cin >> arr[i].speaking_topic;
+			cout << "Enter the fee requied for the speaker:";
+			cin >> arr[i].fee_requied;
+		}
+	}
+}
+void display_info(speaker arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                   INFORMATION OF " << i + 1 << " SPEAKER" << endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "NAME:" << arr[i].name << endl;
+		cout << "TELEPHONE NUMBER:" << arr[i].tel_num << endl;
+		cout << "SPEAKING TOPIC:" << arr[i].speaking_topic << endl;
+		cout << "FEE REQUIED:" << arr[i].fee_requied << endl;
+	}
+}
+void display_updated_info(speaker arr[], int j)
+{
+	for (int i = 0; i < j; i++)
+	{
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "                  UPDATED INFORMATION OF " << i + 1 << " SPEAKER" << endl;
+		cout << "-------------------------------------------------------------------------" << endl;
+		cout << "NAME:" << arr[i].name << endl;
+		cout << "TELEPHONE NUMBER:" << arr[i].tel_num << endl;
+		cout << "SPEAKING TOPIC:" << arr[i].speaking_topic << endl;
+		cout << "FEE REQUIED:" << arr[i].fee_requied << endl;
+	}
+}
+void search_info(speaker arr[], int j, string name)
+{
+	cout << "-------------------------------------------------------------------------" << endl;
+	cout << "                SEARCHED INFORMATION OF CUSTOMER  " << endl;
+	cout << "-------------------------------------------------------------------------" << endl;
+	for (int i = 0; i < j; i++)
+	{
+		if (name == arr[i].name)
+		{
+			cout << "NAME:" << arr[i].name << endl;
+			cout << "TELEPHONE NUMBER:" << arr[i].tel_num << endl;
+			cout << "SPEAKING TOPIC:" << arr[i].speaking_topic << endl;
+			cout << "FEE REQUIED:" << arr[i].fee_requied << endl;
+		}
+	}
+}
+}

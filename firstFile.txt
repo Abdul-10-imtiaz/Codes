@@ -1,0 +1,3 @@
+   34     akbar
+   34       ali
+   23      amir

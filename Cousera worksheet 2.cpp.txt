@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+// void printMenu()
+// {
+//     std::cout << "1: Print help " << std::endl;
+//     std::cout << "2: Print exchange stats" << std::endl;
+// 	std::cout << "3: Place an ask" << std::endl;
+// 	std::cout << "4: Place a bid" << std::endl;
+// 	std::cout << "5: Print wallet" << std::endl;
+// 	std::cout << "6: Continue" << std::endl;
+//     std::cout << "Type in 1-6" << std::endl;
+// }
+int getUserOption(){
+    std::cout << "1: Print help " << std::endl;
+    std::cout << "2: Print exchange stats" << std::endl;
+    std::cout << "3: Place an ask" << std::endl;
+    std::cout << "4: Place a bid" << std::endl;
+    std::cout << "5: Print wallet" << std::endl;
+    std::cout << "6: Continue" << std::endl;
+    std::cout << "Type in 1-6" << std::endl;
+    // std::cin >> userOption;
+}
+int main()
+{
+while (true)
+{
+//printMenu();
+int userOption = getUserOption();
+// getUserOption(userOption);
+}
+return 0;
+}
+void processUserOption(int userOption)
+{
+if (userOption == 0) // bad input
+{
+std::cout << "Invalid choice. Choose 1-6" << std::endl;
+}
+	if (userOption == 1)
+		{
+			std::cout << "Help - choose options from the menu" << std::endl;
+			std::cout << "and follow the on screen instructions." << std::endl;
+			std::cout << "\t\tProcessing your selected option............................." << std::endl;
+		}
+	if (userOption == 2)
+		{
+			std::cout << "exchange stats - choose options from the menu" << std::endl;
+			std::cout << "and follow the on screen instructions." << std::endl;
+			std::cout << "\t\tProcessing your selected option............................." << std::endl;
+		}
+	if (userOption == 3)
+		{
+			std::cout << "ask- choose options from the menu" << std::endl;
+			std::cout << "and follow the on screen instructions." << std::endl;
+			std::cout << "\t\tProcessing your selected option............................." << std::endl;
+		}
+	if (userOption == 4)
+		{
+			std::cout << " bid- choose options from the menu" << std::endl;
+			std::cout << "and follow the on screen instructions." << std::endl;
+			std::cout << "\t\tProcessing your selected option............................." << std::endl;
+		}
+	if (userOption == 5)
+		{
+			std::cout << "wallet - choose options from the menu" << std::endl;
+			std::cout << "and follow the on screen instructions." << std::endl;
+			std::cout << "\t\tProcessing your selected option............................." << std::endl;
+		}
+	if (userOption == 6)
+		{
+			std::cout << " Continue- choose options from the menu" << std::endl;
+			std::cout << "and follow the on screen instructions." << std::endl;
+			std::cout << "\t\tProcessing your selected option............................." << std::endl;
+		}
+}
